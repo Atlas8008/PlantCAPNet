@@ -1,0 +1,6 @@
+[submodule "plantcapnet_compute"]
+	path = plantcapnet_compute
+	url = git@github.com:Atlas8008/plantcapnet_compute.git
+[submodule "gbif-image-downloader"]
+	path = gbif-image-downloader
+	url = git@github.com:Atlas8008/gbif-image-downloader.git
