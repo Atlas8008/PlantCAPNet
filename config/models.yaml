@@ -1,0 +1,95 @@
+# This file contains the configuration for different models used in the project.
+# Each model is categorized into different sections based on its training type.
+#
+# To add a new model, copy the template below and fill in the details.
+# Template:
+# <model_name>:
+#   engine: <engine_name>
+#   model: <path_to_model_file>
+#   preprocessing: <preprocessing_method>
+#   input_width: <input_image_width>
+#   input_height: <input_image_height>
+# Example:
+# InsectArmageddon:
+#   engine: Standardized
+#   model: models/ia.pth
+#   preprocessing: torch
+#   input_width: 2688
+#   input_height: 1536
+#
+# Note: Ensure that the model paths are correct and the preprocessing methods
+# are compatible with the models.
+# The values "preprocessing", "engine", "input_width" and "input_height" are
+# optional and default to:
+#   preprocessing: torch
+#   engine: Standardized
+#   input_width: 3200
+#   input_height: 1792
+
+cover-trained:
+  InsectArmageddon:
+    engine: Standardized
+    model: models/ia_cover-trained.pth
+    preprocessing: torch
+    input_width: 2688
+    input_height: 1536
+
+  BotGardJena21 Image-based:
+    engine: Standardized
+    model: models/bgj21_image_cover-trained.pth
+    preprocessing: torch
+    input_width: 2560
+    input_height: 1920
+
+  BotGardJena21 Field-based:
+    engine: Standardized
+    model: models/bgj21_field_cover-trained.pth
+    preprocessing: torch
+    input_width: 2560
+    input_height: 1920
+
+  GCEF23:
+    engine: Standardized
+    model: models/gcef23nm_all_cover-trained.pth
+    preprocessing: torch
+    input_width: 3200
+    input_height: 1792
+
+  GCEF23 Mixed-Resolution:
+    engine: Standardized
+    model: models/gcef23nm_all_cover-trained_mixed-res.pth
+    preprocessing: torch
+    input_width: 3200
+    input_height: 1792
+
+  Test Model:
+    engine: Standardized
+    model: models/test_model_ensemble_.pth
+    preprocessing: torch
+    input_width: 2688
+    input_height: 1536
+
+zero-shot:
+  InsectArmageddon:
+    engine: Standardized
+    model: models/ia_zeroshot.pth
+    preprocessing: torch
+    input_width: 2688
+    input_height: 1536
+
+  BotGardJena21:
+    engine: Standardized
+    model: models/bgj21_zeroshot.pth
+    preprocessing: torch
+    input_width: 2560
+    input_height: 1920
+
+  GCEF23:
+    engine: Standardized
+    model: models/gcef23_zeroshot.pth
+    preprocessing: torch
+    input_width: 3200
+    input_height: 1792
+
+  Custom Model:
+    model: models/gcef23_zeroshot.pth

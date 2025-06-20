@@ -1,0 +1,15 @@
+__pycache__/
+flagged/
+gradio_cached_examples/
+VAT/
+plantcapnet_compute/
+models/
+.gradio
+.gradio_cache
+.vscode
+
+*.pyi
+*.pyc
+
+todo
+models

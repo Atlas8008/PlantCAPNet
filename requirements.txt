@@ -1,0 +1,5 @@
+gradio==5.16
+gradio-client==1.7.0
+pydantic==2.9.0
+pydantic-core==2.23.2
+pyyaml
