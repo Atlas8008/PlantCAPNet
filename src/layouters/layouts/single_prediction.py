@@ -24,7 +24,7 @@ class SinglePredictionLayout(Layout):
     def layout(self, process_image, tracker, root):
         outputs = []
 
-        self.model_dropdown = model = gr.Dropdown(self.models, label="Model", value=self.models[0])
+        self.model_dropdown = model = gr.Dropdown(self.models, label="Model", value=self.models[0] if self.models else None)
 
         with gr.Group():
             with gr.Accordion("Inference Parameters"):

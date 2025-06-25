@@ -24,6 +24,9 @@ class PredictionEngineManager(EngineManager):
         self._batch_prediction_layout = None
 
     def single_prediction(self, engine_name, image, *params):
+        if engine_name not in self.engine_dict:
+            raise gr.Error(f"Invalid model selected, please add or select a valid model")
+
         params_dict = ComponentValueTracker.tracked_list_to_dict(
             self._single_pred_value_tracker,
             params,
@@ -32,6 +35,9 @@ class PredictionEngineManager(EngineManager):
         return self.engine_dict[engine_name].single_prediction(image, **params_dict)
 
     def batch_prediction(self, engine_name, *params, progress=gr.Progress()):
+        if engine_name not in self.engine_dict:
+            raise gr.Error(f"Invalid model selected, please add or select a valid model")
+
         params_dict = ComponentValueTracker.tracked_list_to_dict(
             self._batch_pred_value_tracker,
             params,

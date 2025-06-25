@@ -26,11 +26,22 @@ def update_models(*dropdowns):
     )
     models_cover = list(setup.cover_engine_manager.engine_dict.keys())
     models_zeroshot = list(setup.zeroshot_engine_manager.engine_dict.keys())
+
+    if len(models_cover) > 0:
+        selected_cover_model = models_cover[0]
+    else:
+        selected_cover_model = None
+
+    if len(models_zeroshot) > 0:
+        selected_zeroshot_model = models_zeroshot[0]
+    else:
+        selected_zeroshot_model = None
+
     print("Model configuration updated.")
     return [
-        gr.Dropdown(models_cover, value=models_cover[0])
+        gr.Dropdown(models_cover, value=selected_cover_model)
     ] * (len(dropdowns) // 2) + [
-        gr.Dropdown(models_zeroshot, value=models_zeroshot[0])
+        gr.Dropdown(models_zeroshot, value=selected_zeroshot_model)
     ] * (len(dropdowns) // 2)
 
 MODES = ("covertrained", "zeroshot", "training")
@@ -58,8 +69,6 @@ with open("config/styles.css", "r") as f:
     css = f.read()
 with open("config/scripts.js", "r") as f:
     js = f.read()
-# with open("config/models.json", "r") as f:
-#     model_config = json.loads(f.read())
 with open("config/models.yaml", "r") as f:
     model_config = yaml.safe_load(f.read())
 

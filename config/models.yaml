@@ -27,69 +27,18 @@
 #   input_height: 1792
 
 cover-trained:
-  InsectArmageddon:
-    engine: Standardized
-    model: models/ia_cover-trained.pth
-    preprocessing: torch
-    input_width: 2688
-    input_height: 1536
+  #  <Your Model Name>:
+  #    engine: Standardized
+  #    model: models/<your_model_filename>.pth
+  #    preprocessing: torch
+  #    input_width: 2688
+  #    input_height: 1536
 
-  BotGardJena21 Image-based:
-    engine: Standardized
-    model: models/bgj21_image_cover-trained.pth
-    preprocessing: torch
-    input_width: 2560
-    input_height: 1920
-
-  BotGardJena21 Field-based:
-    engine: Standardized
-    model: models/bgj21_field_cover-trained.pth
-    preprocessing: torch
-    input_width: 2560
-    input_height: 1920
-
-  GCEF23:
-    engine: Standardized
-    model: models/gcef23nm_all_cover-trained.pth
-    preprocessing: torch
-    input_width: 3200
-    input_height: 1792
-
-  GCEF23 Mixed-Resolution:
-    engine: Standardized
-    model: models/gcef23nm_all_cover-trained_mixed-res.pth
-    preprocessing: torch
-    input_width: 3200
-    input_height: 1792
-
-  Test Model:
-    engine: Standardized
-    model: models/test_model_ensemble_.pth
-    preprocessing: torch
-    input_width: 2688
-    input_height: 1536
 
 zero-shot:
-  InsectArmageddon:
-    engine: Standardized
-    model: models/ia_zeroshot.pth
-    preprocessing: torch
-    input_width: 2688
-    input_height: 1536
-
-  BotGardJena21:
-    engine: Standardized
-    model: models/bgj21_zeroshot.pth
-    preprocessing: torch
-    input_width: 2560
-    input_height: 1920
-
-  GCEF23:
-    engine: Standardized
-    model: models/gcef23_zeroshot.pth
-    preprocessing: torch
-    input_width: 3200
-    input_height: 1792
-
-  Custom Model:
-    model: models/gcef23_zeroshot.pth
+  #  <Your Model Name>:
+  #    engine: Standardized
+  #    model: models/<your_model_filename>.pth
+  #    preprocessing: torch
+  #    input_width: 2688
+  #    input_height: 1536

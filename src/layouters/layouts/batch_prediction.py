@@ -63,7 +63,7 @@ class BatchPredictionLayout(Layout):
         self.model_dropdown = None
 
     def layout(self, predict_fn, tracker, root):
-        self.model_dropdown = model = gr.Dropdown(self.models, value=self.models[0], label="Model")
+        self.model_dropdown = model = gr.Dropdown(self.models, value=self.models[0] if self.models else None, label="Model")
         with gr.Group():
             with gr.Row():
                 gr.Markdown("## &nbsp;Input")
