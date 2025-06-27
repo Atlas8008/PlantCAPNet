@@ -94,14 +94,14 @@ class ModelManager:
         set_device_dynamically (bool): Whether to dynamically set the device.
         model (torch.nn.Module): The loaded model.
     """
-    def __init__(self, model_path, device, set_device_dynamically=True):
+    def __init__(self, model_path, device, set_device_dynamically=None):
         """
         Initializes the ModelManager.
 
         Args:
             model_path (str): Path to the model file.
             device (str): Device to load the model on.
-            set_device_dynamically (bool): Whether to dynamically set the device.
+            set_device_dynamically (bool): Whether to dynamically set the device. If None, will determine based on if the model has a dynamic_device attribute.
         """
         self.model_path = model_path
         self.device = device
@@ -117,14 +117,13 @@ class ModelManager:
         """
         global LOADED_MODELS
 
-        device = "cpu" if self.set_device_dynamically else self.device
 
         if self.model_path not in LOADED_MODELS:
             LOADED_MODELS = {}
             print("Loading model from", self.model_path)
             self.model = torch.load(
                 self.model_path,
-                map_location=device,
+                map_location="cpu",
                 weights_only=False,
             )
 
@@ -133,8 +132,18 @@ class ModelManager:
             print("Reusing model for", self.model_path)
             self.model = LOADED_MODELS[self.model_path]
 
-        if self.set_device_dynamically:
+        set_device_dynamically = self.set_device_dynamically
+
+        if set_device_dynamically is None:
+            # If the model is an ensemble model, set device dynamically
+            set_device_dynamically = hasattr(self.model, "dynamic_device")
+
+        device = "cpu" if set_device_dynamically else self.device
+
+        if set_device_dynamically:
             self.model.dynamic_device = self.device
+
+        self.model.to(device)
 
         return self
 

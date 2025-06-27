@@ -98,6 +98,9 @@ with gr.Blocks(
                 elem_classes="model-scan-button",
                 elem_id="model-scan-button",
             )
+
+    model_scan_io = []
+
     if "covertrained" in args.modes:
         with gr.Tab("Cover-Trained Cover Prediction", elem_classes="tab"):
             with gr.Tab("Single", elem_classes="tab"):
@@ -119,6 +122,9 @@ with gr.Blocks(
                     gr.Markdown("# &nbsp;Cover-Trained Cover Prediction Training")
                     setup.cover_training_engine.training_layout(root=demo)
 
+        model_scan_io.append(setup.cover_engine_manager._single_prediction_layout.model_dropdown)
+        model_scan_io.append(setup.cover_engine_manager._batch_prediction_layout.model_dropdown)
+
     if "zeroshot" in args.modes:
         with gr.Tab("Zero-Shot Cover Prediction", elem_classes="tab"):
             with gr.Tab("Single", elem_classes="tab"):
@@ -139,21 +145,14 @@ with gr.Blocks(
                     gr.Markdown("# &nbsp;Zero-Shot Cover Prediction Training")
                     setup.zeroshot_training_engine.training_layout(root=demo)
 
+        model_scan_io.append(setup.zeroshot_engine_manager._single_prediction_layout.model_dropdown)
+        model_scan_io.append(setup.zeroshot_engine_manager._batch_prediction_layout.model_dropdown)
+
     # Update of models in the dropdowns by re-checking the model configuration file
     model_scan.click(
         update_models,
-        inputs=[
-            setup.cover_engine_manager._single_prediction_layout.model_dropdown,
-            setup.cover_engine_manager._batch_prediction_layout.model_dropdown,
-            setup.zeroshot_engine_manager._single_prediction_layout.model_dropdown,
-            setup.zeroshot_engine_manager._batch_prediction_layout.model_dropdown
-        ],
-        outputs=[
-            setup.cover_engine_manager._single_prediction_layout.model_dropdown,
-            setup.cover_engine_manager._batch_prediction_layout.model_dropdown,
-            setup.zeroshot_engine_manager._single_prediction_layout.model_dropdown,
-            setup.zeroshot_engine_manager._batch_prediction_layout.model_dropdown
-        ],
+        inputs=model_scan_io,
+        outputs=model_scan_io,
     )
 
 
