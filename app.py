@@ -37,12 +37,20 @@ def update_models(*dropdowns):
     else:
         selected_zeroshot_model = None
 
+    output_dropdowns = []
+
+    if "covertrained" in args.modes:
+        output_dropdowns.extend([
+            gr.Dropdown(models_cover, value=selected_cover_model),
+        ] * 2)
+
+    if "zeroshot" in args.modes:
+        output_dropdowns.extend([
+            gr.Dropdown(models_zeroshot, value=selected_zeroshot_model)
+        ] * 2)
+
     print("Model configuration updated.")
-    return [
-        gr.Dropdown(models_cover, value=selected_cover_model)
-    ] * (len(dropdowns) // 2) + [
-        gr.Dropdown(models_zeroshot, value=selected_zeroshot_model)
-    ] * (len(dropdowns) // 2)
+    return output_dropdowns
 
 MODES = ("covertrained", "zeroshot", "training")
 
