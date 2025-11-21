@@ -2,6 +2,22 @@
 
 PlantCAPNet is a web application for automatically determining the plant cover (plant abundances) and phenology of plant communities from top-down images. It comprises a web interface for configuring training and inference, and a backend used for the computations.
 
+## Cloning
+
+To clone the repository, use
+
+```
+git clone --recurse-submodules git@github.com:Atlas8008/PlantCAPNet.git
+```
+
+Please note the `--recurse-submodules` parameter, so that the submodules are included as well. If you already clones the main repository without submodules, use
+
+```
+cd PlantCapNet/
+git submodule update --init --recursive
+```
+to download the submodules as well.
+
 ## Setup
 
 The system was developed and tested on Ubuntu 22.04 LTS and 24.04 LTS. While it also might work under Windows, this is currently untested.
